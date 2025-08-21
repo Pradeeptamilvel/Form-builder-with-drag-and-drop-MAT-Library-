@@ -1,7 +1,14 @@
+export interface DefaultConfig {
+  label: string;
+  required: boolean;
+}
+
 export interface FieldTypeDefinition {
   type: string;
   label: string;
   icon: string;
+  defaultConfig: DefaultConfig;
+  component: any;
 }
 
 export interface FieldType {
@@ -11,7 +18,7 @@ export interface FieldType {
   required: boolean;
 }
 
-export interface FormField {
+export interface FormRow {
   id: string;
   fields: FieldType[];
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ModeService } from '../services/mode.service';
 
 @Component({
   selector: 'app-main-form',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './main-form.component.scss'
 })
 export class mainFormComponent {
+  private modeService = inject(ModeService);
 
+  isEditMode = this.modeService.isEditMode;
+
+  toggleMode() {
+    this.modeService.toggleMode();
+  }
 }

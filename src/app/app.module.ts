@@ -15,6 +15,10 @@ import { mainFormComponent } from './main-form/main-form.component';
 import { FormControlComponent } from './form-control/form-control.component';
 import { FieldButtonComponent } from './form-elements/field-button/field-button.component';
 import { FormElementsComponent } from './form-elements/form-elements.component';
+import { FormFieldComponent } from './main-form/form-field/form-field.component';
+import { TextFieldComponent } from './field-types/text-field/text-field.component';
+import { CheckBoxFieldComponent } from './field-types/check-box-field/check-box-field.component';
+import { NumberFieldComponent } from './field-types/number-field/number-field.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +28,10 @@ import { FormElementsComponent } from './form-elements/form-elements.component';
     FormElementsComponent,
     FormControlComponent,
     FieldButtonComponent,
+    FormFieldComponent,
+    TextFieldComponent,
+    CheckBoxFieldComponent,
+    NumberFieldComponent
   ],
   imports: [
     BrowserModule,
