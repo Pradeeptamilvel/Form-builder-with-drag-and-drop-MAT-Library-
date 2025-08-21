@@ -1,12 +1,13 @@
 <div class="card border-success mb-3">
   <div class="card-header bg-success text-white">
-    <h5 class="mb-0">Form Editor</h5>
+    <h5 class="mb-0">Form Elements</h5>
   </div>
   <div class="card-body">
-    <p>
+    <h3 class="card-title">List of Form Elements</h3>
+    <div>
       @for (item of fieldTypes; track item.type) {
-        <app-field-button [fields]="item"></app-field-button>
+        <app-field-button [fields]="[item]!"></app-field-button>
       }
-    </p>
+    </div>
   </div>
 </div>

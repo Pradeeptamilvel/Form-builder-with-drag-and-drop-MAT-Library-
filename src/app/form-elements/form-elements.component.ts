@@ -3,12 +3,12 @@ import { FieldTypeService } from '../services/field-type.service';
 import { inject } from '@angular/core';
 
 @Component({
-  selector: 'app-form-editor',
+  selector: 'app-form-elements',
   standalone: false,
-  templateUrl: './form-editor.component.html',
-  styleUrl: './form-editor.component.scss',
+  templateUrl: './form-elements.component.html',
+  styleUrl: './form-elements.component.scss',
 })
-export class FormEditorComponent {
+export class FormElementsComponent {
   //Injections
   private fieldTypeService = inject(FieldTypeService);
 
