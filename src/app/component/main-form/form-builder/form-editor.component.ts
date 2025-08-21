@@ -2,12 +2,12 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-form-builder',
+  selector: 'app-form-editor',
   standalone: false,
-  templateUrl: './form-builder.component.html',
-  styleUrl: './form-builder.component.scss',
+  templateUrl: './form-editor.component.html',
+  styleUrl: './form-editor.component.scss',
 })
-export class FormBuilderComponent {
+export class FormEditorComponent {
   onDrop(event: CdkDragDrop<string>) {
     if (event.previousContainer.data === 'field-selector') {
       console.log('Dropped in field selector');

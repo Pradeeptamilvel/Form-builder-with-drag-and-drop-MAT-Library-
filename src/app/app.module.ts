@@ -13,14 +13,14 @@ import { AppComponent } from './app.component';
 import { FormControlComponent } from './component/form-control/form-control.component';
 import { FieldButtonComponent } from './component/form-elements/field-button/field-button.component';
 import { FormElementsComponent } from './component/form-elements/form-elements.component';
-import { FormBuilderComponent } from './component/main-form/form-builder/form-builder.component';
+import { FormEditorComponent } from './component/main-form/form-builder/form-editor.component';
 import { mainFormComponent } from './component/main-form/main-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     mainFormComponent,
-    FormBuilderComponent,
+    FormEditorComponent,
     FormElementsComponent,
     FormControlComponent,
     FieldButtonComponent,
