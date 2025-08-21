@@ -4,12 +4,17 @@
     cdkDropList
     (cdkDropListDropped)="onDrop($event, item.id)"
     [cdkDropListConnectedTo]="['field-selector']"
+    [cdkDropListOrientation]="'mixed'"
+    class="mb-3"
   >
-    @for (items of item.fields; track items.id) {
-    <div>
-      {{ items.label }}
+    <div class="mb-2">Row</div>
+    <div class="row">
+      @for (items of item.fields; track items.id) {
+      <div class="col">
+        {{ items.label }}
+      </div>
+      }
     </div>
-    }
   </div>
   }
 </div>
