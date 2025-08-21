@@ -1,0 +1,18 @@
+<div class="container mt-3">
+  @for (item of fieldTypeService.rows(); track item.id) {
+  <div
+    cdkDropList
+    (cdkDropListDropped)="onDrop($event, item.id)"
+    [cdkDropListConnectedTo]="isEditMode ? ['field-selector'] : []"
+    [cdkDropListOrientation]="'mixed'"
+    class="row g-3 mb-3"
+    [class.disabled-drop-zone]="!isEditMode"
+  >
+    @for (field of item.fields; track field.id; let i = $index) {
+    <div class="col-12 col-md-6 col-lg-4">
+      <app-form-field [field]="field" [index]="i + 1"></app-form-field>
+    </div>
+    }
+  </div>
+  }
+</div>

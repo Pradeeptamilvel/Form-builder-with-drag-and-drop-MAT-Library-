@@ -1,0 +1,9 @@
+<mat-form-field class="w-100">
+  <mat-label>{{ field.label }}</mat-label>
+  <input
+    matInput
+    type="number"
+    maxlength="10"
+    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+  />
+</mat-form-field>
