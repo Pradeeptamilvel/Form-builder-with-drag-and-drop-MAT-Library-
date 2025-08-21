@@ -10,11 +10,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormBuilderComponent } from './main-form/form-builder/form-builder.component';
-import { mainFormComponent } from './main-form/main-form.component';
-import { FormControlComponent } from './form-control/form-control.component';
-import { FieldButtonComponent } from './form-elements/field-button/field-button.component';
-import { FormElementsComponent } from './form-elements/form-elements.component';
+import { FormControlComponent } from './component/form-control/form-control.component';
+import { FieldButtonComponent } from './component/form-elements/field-button/field-button.component';
+import { FormElementsComponent } from './component/form-elements/form-elements.component';
+import { FormBuilderComponent } from './component/main-form/form-builder/form-builder.component';
+import { mainFormComponent } from './component/main-form/main-form.component';
 
 @NgModule({
   declarations: [

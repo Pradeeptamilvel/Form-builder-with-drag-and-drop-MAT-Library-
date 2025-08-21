@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FieldTypeService } from '../services/field-type.service';
 import { inject } from '@angular/core';
+import { FieldTypeService } from '../../services/field-type.service';
 
 @Component({
   selector: 'app-form-elements',
