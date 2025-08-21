@@ -1,5 +1,7 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormService } from '../../../services/form.service';
+import { FormField } from '../../../models/field';
 
 @Component({
   selector: 'app-form-editor',
@@ -8,10 +10,17 @@ import { Component } from '@angular/core';
   styleUrl: './form-editor.component.scss',
 })
 export class FormEditorComponent {
-  onDrop(event: CdkDragDrop<string>) {
+  //Injections
+  formService = inject(FormService);
+  onDrop(event: CdkDragDrop<string>, rowId: string) {
     if (event.previousContainer.data === 'field-selector') {
-      console.log('Dropped in field selector');
-      console.log(event);
+      const fieldType = event.item.data;
+      const newField: FormField = {
+        id: crypto.randomUUID(),
+        type: fieldType.type,
+       ...fieldType.defaultConfig,
+      };
+      this.formService.addField(newField, rowId, event.currentIndex);
     }
   }
 }

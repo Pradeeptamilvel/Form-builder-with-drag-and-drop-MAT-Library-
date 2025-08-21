@@ -1,7 +1,15 @@
-<div class="container mt-3 ">
-  <div cdkDropList
-       (cdkDropListDropped)="onDrop($event)"
-       [cdkDropListConnectedTo]="['field-selector']">
-    <p class="text-center text-muted"></p>
+<div class="container mt-3">
+  @for (item of formService.rows(); track item.id) {
+  <div
+    cdkDropList
+    (cdkDropListDropped)="onDrop($event, item.id)"
+    [cdkDropListConnectedTo]="['field-selector']"
+  >
+    @for (items of item.fields; track items.id) {
+    <div>
+      {{ items.label }}
+    </div>
+    }
   </div>
+  }
 </div>

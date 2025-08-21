@@ -2,8 +2,13 @@ export interface FieldTypeDefinition {
   type: string;
   label: string;
   icon: string;
+  defaultConfig: DefaultConfig;
 }
 
+export interface DefaultConfig {
+  label: string;
+  required: boolean;
+}
 export interface FormField {
   id: string;
   type: string;
