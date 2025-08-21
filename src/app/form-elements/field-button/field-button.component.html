@@ -3,7 +3,11 @@
     @for (field of fields; track field.type) {
     <div class="col-md-12">
       <div class="card text-center">
-        <button class="btn btn-light border-0 p-0"  cdkDrag [cdkDragData]="field" >
+        <button
+          class="btn btn-light border-0 p-0"
+          cdkDrag
+          [cdkDragData]="field"
+        >
           <div
             class="card-body btn btn-light d-flex align-items-center justify-content-start gap-3 py-0"
           >

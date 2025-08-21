@@ -1,1 +1,7 @@
-<p>form-builder works!</p>
+<div class="container mt-3 ">
+  <div cdkDropList
+       (cdkDropListDropped)="onDrop($event)"
+       [cdkDropListConnectedTo]="['field-selector']">
+    <p class="text-center text-muted"></p>
+  </div>
+</div>

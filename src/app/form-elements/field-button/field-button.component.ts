@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FieldType } from '../../models/field';
+import { FieldTypeDefinition } from '../../models/field';
 
 @Component({
   selector: 'app-field-button',
@@ -8,5 +8,5 @@ import { FieldType } from '../../models/field';
   styleUrl: './field-button.component.scss',
 })
 export class FieldButtonComponent {
-  @Input() fields!: FieldType[];
+  @Input() fields!: FieldTypeDefinition[];
 }

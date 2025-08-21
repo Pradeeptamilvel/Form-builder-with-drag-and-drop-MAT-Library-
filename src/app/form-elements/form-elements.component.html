@@ -4,7 +4,12 @@
   </div>
   <div class="card-body">
     <h3 class="card-title text-center">List of Form Elements</h3>
-    <div cdkDropList cdkDropListSortingDisabled="true" [cdkDropListData]="'field-selector'">
+    <div
+      cdkDropList
+      id="field-selector"
+      cdkDropListSortingDisabled="true"
+      [cdkDropListData]="'field-selector'"
+    >
       @for (item of fieldTypes; track item.type) {
       <app-field-button [fields]="[item]!"></app-field-button>
       }
