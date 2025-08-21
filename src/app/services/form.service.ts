@@ -9,7 +9,7 @@ import { FieldTypeDefinition } from '../models/field';
 @Injectable({
   providedIn: 'root',
 })
-export class FieldTypeService {
+export class FormService {
   fieldTypes = new Map<string, FieldTypeDefinition>([
     ['text', TEXT_FIELD_DEFINITION],
     ['number', NUMBER_FIELD_DEFINITION],

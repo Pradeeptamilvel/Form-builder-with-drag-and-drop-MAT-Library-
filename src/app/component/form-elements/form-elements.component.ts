@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { inject } from '@angular/core';
-import { FieldTypeService } from '../../services/field-type.service';
+import { Component, inject } from '@angular/core';
+import { FormService } from '../../services/form.service';
 
 @Component({
   selector: 'app-form-elements',
@@ -10,7 +9,7 @@ import { FieldTypeService } from '../../services/field-type.service';
 })
 export class FormElementsComponent {
   //Injections
-  private fieldTypeService = inject(FieldTypeService);
+  private formService = inject(FormService);
 
-  fieldTypes = this.fieldTypeService.getAllFields();
+  fieldTypes = this.formService.getAllFields();
 }

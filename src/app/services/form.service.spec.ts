@@ -1,13 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-
-import { FieldTypeService } from './field-type.service';
+import { FormService } from './form.service';
 
 describe('FieldTypeService', () => {
-  let service: FieldTypeService;
+  let service: FormService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FieldTypeService);
+    service = TestBed.inject(FormService);
   });
 
   it('should be created', () => {
