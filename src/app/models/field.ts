@@ -4,14 +4,14 @@ export interface FieldTypeDefinition {
   icon: string;
 }
 
-export interface FieldType {
+export interface FormField {
   id: string;
   type: string;
   label: string;
   required: boolean;
 }
 
-export interface FormField {
+export interface FormRow {
   id: string;
-  fields: FieldType[];
+  fields: FormField[];
 }
