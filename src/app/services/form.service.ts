@@ -16,6 +16,10 @@ export class FormService {
     ['checkbox', CHECKBOX_FIELD_DEFINITION],
   ]);
 
+  getFieldType(type: string): FieldTypeDefinition | undefined {
+    return this.fieldTypes.get(type);
+  }
+
   private _rows = signal<FormRow[]>([]);
   public readonly rows = this._rows.asReadonly();
 
@@ -40,6 +44,14 @@ export class FormService {
         return { ...row, fields: updatedFields };
       }
       return row;
+    });
+    this._rows.set(newRows);
+  }
+  deleteField(fieldId: string) {
+    const rows = this._rows();
+    const newRows = rows.map((row) => {
+      const updatedFields = row.fields.filter((f) => f.id !== fieldId);
+      return { ...row, fields: updatedFields };
     });
     this._rows.set(newRows);
   }

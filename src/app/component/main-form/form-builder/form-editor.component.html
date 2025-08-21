@@ -1,20 +1,27 @@
 <div class="container mt-3">
   @for (item of formService.rows(); track item.id) {
-  <div
-    cdkDropList
-    (cdkDropListDropped)="onDrop($event, item.id)"
-    [cdkDropListConnectedTo]="['field-selector']"
-    [cdkDropListOrientation]="'mixed'"
-    class="mb-3"
-  >
-    <div class="mb-2">Row</div>
-    <div class="row">
-      @for (items of item.fields; track items.id) {
-      <div class="col">
-        {{ items.label }}
+    <div
+      cdkDropList
+      (cdkDropListDropped)="onDrop($event, item.id)"
+      [cdkDropListConnectedTo]="['field-selector']"
+      [cdkDropListOrientation]="'mixed'"
+      class="mb-3"
+    >
+      <div class="mb-2">Row</div>
+      <div class="row">
+        @for (items of item.fields; track items.id) {
+          <div
+            class="col"
+            [ngClass]="{
+              'col-12': item.fields.length === 1,
+              'col-6': item.fields.length === 2,
+              'col-4': item.fields.length === 3
+            }"
+          >
+            <app-form-field [field]="items"></app-form-field>
+          </div>
+        }
       </div>
-      }
     </div>
-  </div>
   }
 </div>

@@ -15,6 +15,10 @@ import { FieldButtonComponent } from './component/form-elements/field-button/fie
 import { FormElementsComponent } from './component/form-elements/form-elements.component';
 import { FormEditorComponent } from './component/main-form/form-builder/form-editor.component';
 import { mainFormComponent } from './component/main-form/main-form.component';
+import { FormFieldComponent } from './component/main-form/form-field/form-field.component';
+import { TextFieldComponent } from './component/field-types/text-field/text-field.component';
+import { CheckBoxFieldComponent } from './component/field-types/check-box-field/check-box-field.component';
+import { TitleCasePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -24,6 +28,9 @@ import { mainFormComponent } from './component/main-form/main-form.component';
     FormElementsComponent,
     FormControlComponent,
     FieldButtonComponent,
+    FormFieldComponent,
+    TextFieldComponent,
+    CheckBoxFieldComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +43,7 @@ import { mainFormComponent } from './component/main-form/main-form.component';
     MatCheckboxModule,
     MatSelectModule,
     DragDropModule,
+    TitleCasePipe
   ],
   providers: [],
   bootstrap: [AppComponent],

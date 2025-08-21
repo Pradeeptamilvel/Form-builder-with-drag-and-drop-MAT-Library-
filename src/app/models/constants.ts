@@ -1,3 +1,5 @@
+import { CheckBoxFieldComponent } from '../component/field-types/check-box-field/check-box-field.component';
+import { TextFieldComponent } from '../component/field-types/text-field/text-field.component';
 import { FieldTypeDefinition } from './field';
 
 export const TEXT_FIELD_DEFINITION: FieldTypeDefinition = {
@@ -8,6 +10,7 @@ export const TEXT_FIELD_DEFINITION: FieldTypeDefinition = {
     label: 'Text Field',
     required: false,
   },
+  component: TextFieldComponent
 };
 
 export const NUMBER_FIELD_DEFINITION: FieldTypeDefinition= {
@@ -18,6 +21,7 @@ export const NUMBER_FIELD_DEFINITION: FieldTypeDefinition= {
     label: 'Number Field',
     required: false,
   },
+  component: TextFieldComponent
 };
 
 export const CHECKBOX_FIELD_DEFINITION: FieldTypeDefinition = {
@@ -28,4 +32,5 @@ export const CHECKBOX_FIELD_DEFINITION: FieldTypeDefinition = {
     label: 'Checkbox Field',
     required: false,
   },
+  component: CheckBoxFieldComponent
 };

@@ -3,6 +3,7 @@ export interface FieldTypeDefinition {
   label: string;
   icon: string;
   defaultConfig: DefaultConfig;
+  component: any;
 }
 
 export interface DefaultConfig {
