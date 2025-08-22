@@ -1,12 +1,18 @@
-<div class="p-2 border rounded h-100">
+<div
+  class="p-2 border rounded h-100"
+  [class.border-dark]="isSelected()"
+  [class.border-2]="isSelected()"
+  (click)="this.formService.setSelectedField(field().id)"
+>
   <div class="d-flex justify-content-between align-items-center mb-2">
     <span class="text-start">{{ field().type | titlecase }}</span>
-    <button type="button" class="btn btn-danger btn-sm" (click)="removeField($event)">
+    <button
+      type="button"
+      class="btn btn-danger btn-sm"
+      (click)="removeField($event)"
+    >
       <i class="bi bi-trash"></i>
     </button>
   </div>
-  <ng-container
-    [ngComponentOutlet]="previewComponent()"
-    [ngComponentOutletInputs]="{ field: field() }"
-  ></ng-container>
+  <app-field-preview [field]="field()"></app-field-preview>
 </div>

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormControlComponent } from './form-control.component';
+import { FieldPreviewComponent } from './field-preview.component';
 
-describe('FormControlComponent', () => {
-  let component: FormControlComponent;
-  let fixture: ComponentFixture<FormControlComponent>;
+describe('FieldPreviewComponent', () => {
+  let component: FieldPreviewComponent;
+  let fixture: ComponentFixture<FieldPreviewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FormControlComponent]
+      declarations: [FieldPreviewComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FormControlComponent);
+    fixture = TestBed.createComponent(FieldPreviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

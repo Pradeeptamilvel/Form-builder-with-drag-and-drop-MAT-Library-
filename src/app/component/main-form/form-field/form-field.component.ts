@@ -14,10 +14,10 @@ export class FormFieldComponent {
   // Injection
   formService = inject(FormService);
 
-  previewComponent = computed(() => {
-    const fieldType = this.formService.getFieldType(this.field().type);
-    return fieldType ? fieldType?.component : null;
-  });
+  // Computed property to check if this field is selected
+  isSelected = computed(() =>
+    this.formService.selectedFieldId()?.id === this.field().id
+  );
 
   removeField(event: MouseEvent) {
     event.stopPropagation();

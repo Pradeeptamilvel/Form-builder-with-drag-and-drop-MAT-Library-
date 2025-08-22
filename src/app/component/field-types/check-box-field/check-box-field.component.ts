@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { FormField } from '../../../models/field';
+import { FormField, OptionItem } from '../../../models/field';
 
 @Component({
   selector: 'app-check-box-field',
@@ -8,5 +8,9 @@ import { FormField } from '../../../models/field';
   styleUrl: './check-box-field.component.scss'
 })
 export class CheckBoxFieldComponent {
-field = input.required<FormField>(); 
+  field = input.required<FormField>();
+
+  getOptions(): OptionItem[] {
+    return this.field().options || [];
+  }
 }

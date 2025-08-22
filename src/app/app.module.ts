@@ -1,6 +1,9 @@
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { TitleCasePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,15 +13,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormControlComponent } from './component/form-control/form-control.component';
+import { FieldSettingsComponent } from './component/field-settings/field-settings.component';
+import { CheckBoxFieldComponent } from './component/field-types/check-box-field/check-box-field.component';
+import { SelectFieldComponent } from './component/field-types/select-field/select-field.component';
+import { TextFieldComponent } from './component/field-types/text-field/text-field.component';
+import { RadioFieldComponent } from './component/field-types/radio-field/radio-field.component';
+import { DateFieldComponent } from './component/field-types/date-field/date-field.component';
 import { FieldButtonComponent } from './component/form-elements/field-button/field-button.component';
 import { FormElementsComponent } from './component/form-elements/form-elements.component';
+import { FieldPreviewComponent } from './component/main-form/field-preview/field-preview.component';
 import { FormEditorComponent } from './component/main-form/form-builder/form-editor.component';
-import { mainFormComponent } from './component/main-form/main-form.component';
 import { FormFieldComponent } from './component/main-form/form-field/form-field.component';
-import { TextFieldComponent } from './component/field-types/text-field/text-field.component';
-import { CheckBoxFieldComponent } from './component/field-types/check-box-field/check-box-field.component';
-import { TitleCasePipe } from '@angular/common';
+import { FormPreviewComponent } from './component/main-form/form-preview/form-preview.component';
+import { mainFormComponent } from './component/main-form/main-form.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +33,16 @@ import { TitleCasePipe } from '@angular/common';
     mainFormComponent,
     FormEditorComponent,
     FormElementsComponent,
-    FormControlComponent,
     FieldButtonComponent,
     FormFieldComponent,
     TextFieldComponent,
     CheckBoxFieldComponent,
+    FormPreviewComponent,
+    FieldPreviewComponent,
+    FieldSettingsComponent,
+    SelectFieldComponent,
+    RadioFieldComponent,
+    DateFieldComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +55,9 @@ import { TitleCasePipe } from '@angular/common';
     MatCheckboxModule,
     MatSelectModule,
     DragDropModule,
-    TitleCasePipe
+    TitleCasePipe,
+    MatButtonToggleModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

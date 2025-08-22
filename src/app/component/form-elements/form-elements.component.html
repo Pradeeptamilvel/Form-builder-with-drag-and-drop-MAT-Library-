@@ -9,6 +9,7 @@
       id="field-selector"
       cdkDropListSortingDisabled="true"
       [cdkDropListData]="'field-selector'"
+      [cdkDropListEnterPredicate]="blockDropOnElement"
     >
       @for (item of fieldTypes; track item.type) {
       <app-field-button [fields]="[item]!"></app-field-button>

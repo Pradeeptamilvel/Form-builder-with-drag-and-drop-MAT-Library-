@@ -1,5 +1,8 @@
 import { CheckBoxFieldComponent } from '../component/field-types/check-box-field/check-box-field.component';
+import { SelectFieldComponent } from '../component/field-types/select-field/select-field.component';
 import { TextFieldComponent } from '../component/field-types/text-field/text-field.component';
+import { RadioFieldComponent } from '../component/field-types/radio-field/radio-field.component';
+import { DateFieldComponent } from '../component/field-types/date-field/date-field.component';
 import { FieldTypeDefinition } from './field';
 
 export const TEXT_FIELD_DEFINITION: FieldTypeDefinition = {
@@ -10,18 +13,58 @@ export const TEXT_FIELD_DEFINITION: FieldTypeDefinition = {
     label: 'Text Field',
     required: false,
   },
-  component: TextFieldComponent
+  component: TextFieldComponent,
+  settingsConfig: [
+    { key: 'label', label: 'Label', type: 'text' },
+    { key: 'placeholder', label: 'Placeholder', type: 'text' },
+    { key: 'required', label: 'Required', type: 'checkbox' },
+    { key: 'inputType', label: 'Input Type', type: 'select', options: [
+        { label: 'Text', value: 'text' },
+        { label: 'Email', value: 'email' },
+        { label: 'Password', value: 'password' },
+      ] }
+  ]
 };
 
-export const NUMBER_FIELD_DEFINITION: FieldTypeDefinition= {
-  type: 'number',
-  label: 'Number Field',
-  icon: 'straighten',
+export const RADIO_FIELD_DEFINITION: FieldTypeDefinition = {
+  type: 'radio',
+  label: 'Radio Button Group',
+  icon: 'radio_button_checked',
   defaultConfig: {
-    label: 'Number Field',
+    label: 'Radio Button Group',
     required: false,
+    options: [
+      { label: 'Option 1', value: 'option1' },
+      { label: 'Option 2', value: 'option2' }
+    ]
   },
-  component: TextFieldComponent
+  component: RadioFieldComponent,
+  settingsConfig: [
+    { key: 'label', label: 'Label', type: 'text' },
+    { key: 'required', label: 'Required', type: 'checkbox' },
+    {
+      key: 'options',
+      label: 'Radio Options',
+      type: 'dynamic-options'
+    },
+  ]
+};
+
+export const DATE_FIELD_DEFINITION: FieldTypeDefinition = {
+  type: 'date',
+  label: 'Date Picker',
+  icon: 'calendar_today',
+  defaultConfig: {
+    label: 'Date Picker',
+    required: false,
+    placeholder: 'Select date'
+  },
+  component: DateFieldComponent,
+  settingsConfig: [
+    { key: 'label', label: 'Label', type: 'text' },
+    { key: 'placeholder', label: 'Placeholder', type: 'text' },
+    { key: 'required', label: 'Required', type: 'checkbox' },
+  ]
 };
 
 export const CHECKBOX_FIELD_DEFINITION: FieldTypeDefinition = {
@@ -31,6 +74,45 @@ export const CHECKBOX_FIELD_DEFINITION: FieldTypeDefinition = {
   defaultConfig: {
     label: 'Checkbox Field',
     required: false,
+    options: [
+      { label: 'Option 1', value: 'option1' },
+      { label: 'Option 2', value: 'option2' }
+    ]
   },
-  component: CheckBoxFieldComponent
+  component: CheckBoxFieldComponent,
+  settingsConfig: [
+    { key: 'label', label: 'Label', type: 'text' },
+    { key: 'required', label: 'Required', type: 'checkbox' },
+    {
+      key: 'options',
+      label: 'Checkbox Options',
+      type: 'dynamic-options'
+    },
+  ]
+};
+
+
+export const SELECT_FIELD_DEFINITION: FieldTypeDefinition = {
+  type: 'select',
+  label: 'Select Field',
+  icon: 'arrow_drop_down',
+  defaultConfig: {
+    label: 'Select Field',
+    required: false,
+    options: [
+      { label: 'Option 1', value: 'option1' },
+      { label: 'Option 2', value: 'option2' },
+      { label: 'Option 3', value: 'option3' }
+    ]
+  },
+  component: SelectFieldComponent,
+  settingsConfig: [
+    { key: 'label', label: 'Label', type: 'text' },
+    { key: 'required', label: 'Required', type: 'checkbox' },
+    {
+      key: 'options',
+      label: 'Dropdown Options',
+      type: 'dynamic-options'
+    },
+  ]
 };

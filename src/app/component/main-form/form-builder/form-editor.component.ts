@@ -22,5 +22,10 @@ export class FormEditorComponent {
       };
       this.formService.addField(newField, rowId, event.currentIndex);
     }
+    else {
+      const fieldId = event.item.data.id;
+      const fromRowId = event.previousContainer.data;
+      this.formService.moveField(fieldId, fromRowId, rowId, event.currentIndex);
+    }
   }
 }
