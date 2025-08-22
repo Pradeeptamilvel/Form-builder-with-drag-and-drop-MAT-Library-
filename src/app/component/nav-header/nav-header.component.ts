@@ -14,7 +14,10 @@ export class NavHeaderComponent {
   ) {}
 
   logout(): void {
-    this.authService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login']).then((res) => {
+      if (res) {
+        this.authService.logout();
+      }
+    });
   }
 }

@@ -12,6 +12,7 @@ export interface User {
 export class AuthService {
   private currentUserSubject: BehaviorSubject<User | null>;
   public currentUser: Observable<User | null>;
+  private loggingOut = false;
 
   // Credentials configuration
   private readonly credentials = {
@@ -72,5 +73,9 @@ export class AuthService {
 
   hasRole(role: 'admin' | 'user'): boolean {
     return this.currentUserValue?.role === role;
+  }
+
+  isLoggingOut(): boolean {
+    return this.loggingOut;
   }
 }
