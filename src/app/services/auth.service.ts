@@ -13,6 +13,12 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<User | null>;
   public currentUser: Observable<User | null>;
 
+  // Credentials configuration
+  private readonly credentials = {
+    admin: { username: 'admin', password: 'admin', role: 'admin' as const },
+    user: { username: 'user', password: 'user', role: 'user' as const }
+  };
+
   constructor() {
     // Check if user data exists in localStorage
     const storedUser = localStorage.getItem('currentUser');
@@ -27,13 +33,21 @@ export class AuthService {
   }
 
   login(username: string, password: string, role: 'admin' | 'user'): boolean {
-    // Simple authentication logic - in real app, this would call an API
-    if (username && password) {
+    // Validate credentials against configured values
+    if (role === 'admin' && username === this.credentials.admin.username && password === this.credentials.admin.password) {
       const user: User = { username, role };
       localStorage.setItem('currentUser', JSON.stringify(user));
       this.currentUserSubject.next(user);
       return true;
     }
+
+    if (role === 'user' && username === this.credentials.user.username && password === this.credentials.user.password) {
+      const user: User = { username, role };
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      this.currentUserSubject.next(user);
+      return true;
+    }
+
     return false;
   }
 

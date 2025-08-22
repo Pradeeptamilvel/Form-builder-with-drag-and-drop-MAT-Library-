@@ -3,6 +3,7 @@ import { SelectFieldComponent } from '../component/field-types/select-field/sele
 import { TextFieldComponent } from '../component/field-types/text-field/text-field.component';
 import { RadioFieldComponent } from '../component/field-types/radio-field/radio-field.component';
 import { DateFieldComponent } from '../component/field-types/date-field/date-field.component';
+import { ButtonFieldComponent } from '../component/field-types/button-field/button-field.component';
 import { FieldTypeDefinition } from './field';
 
 export const TEXT_FIELD_DEFINITION: FieldTypeDefinition = {
@@ -114,5 +115,53 @@ export const SELECT_FIELD_DEFINITION: FieldTypeDefinition = {
       label: 'Dropdown Options',
       type: 'dynamic-options'
     },
+  ]
+};
+
+export const BUTTON_FIELD_DEFINITION: FieldTypeDefinition = {
+  type: 'button',
+  label: 'Button',
+  icon: 'smart_button',
+  defaultConfig: {
+    label: 'Button',
+    required: false,
+    buttonType: 'btn-primary',
+    alignment: 'left',
+    showCancel: false,
+    cancelLabel: 'Cancel',
+    cancelButtonType: 'btn-secondary'
+  },
+  component: ButtonFieldComponent,
+  settingsConfig: [
+    { key: 'label', label: 'Button Text', type: 'text' },
+    { key: 'buttonType', label: 'Button Type', type: 'select', options: [
+        { label: 'Primary', value: 'btn-primary' },
+        { label: 'Secondary', value: 'btn-secondary' },
+        { label: 'Success', value: 'btn-success' },
+        { label: 'Danger', value: 'btn-danger' },
+        { label: 'Warning', value: 'btn-warning' },
+        { label: 'Info', value: 'btn-info' },
+        { label: 'Light', value: 'btn-light' },
+        { label: 'Dark', value: 'btn-dark' },
+        { label: 'Link', value: 'btn-link' }
+      ] },
+    { key: 'alignment', label: 'Alignment', type: 'select', options: [
+        { label: 'Left', value: 'left' },
+        { label: 'Center', value: 'center' },
+        { label: 'Right', value: 'right' }
+      ] },
+    { key: 'showCancel', label: 'Show Cancel Button', type: 'checkbox' },
+    { key: 'cancelLabel', label: 'Cancel Button Text', type: 'text' },
+    { key: 'cancelButtonType', label: 'Cancel Button Type', type: 'select', options: [
+        { label: 'Primary', value: 'btn-primary' },
+        { label: 'Secondary', value: 'btn-secondary' },
+        { label: 'Success', value: 'btn-success' },
+        { label: 'Danger', value: 'btn-danger' },
+        { label: 'Warning', value: 'btn-warning' },
+        { label: 'Info', value: 'btn-info' },
+        { label: 'Light', value: 'btn-light' },
+        { label: 'Dark', value: 'btn-dark' },
+        { label: 'Link', value: 'btn-link' }
+      ] }
   ]
 };

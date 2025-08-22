@@ -9,21 +9,25 @@
       <mat-button-toggle value="preview">Preview</mat-button-toggle>
     </mat-button-toggle-group> -->
     <div class="form-check form-switch form-switch-lg d-flex align-items-center">
-      <input
-        class="form-check-input bg-warning border-warning"
-        type="checkbox"
-        id="modeToggle"
-        [checked]="activeTab() === 'preview'"
-        (change)="activeTab.set(activeTab() === 'edit' ? 'preview' : 'edit')"
-        role="switch"
-        >
-      <label class="form-check-label text-white fw-bold ms-3" for="modeToggle">
-        {{ activeTab() === 'edit' ? 'Edit Mode' : 'View Mode' }}
-      </label>
-      @if(activeTab() === 'edit'){
-        <button class="btn btn-outline-light btn-sm ms-3" (click)="formService.addRow()">
-          <i class="bi bi-plus"></i>Add Row
-        </button>
+      @if(isAdmin()) {
+        <input
+          class="form-check-input bg-warning border-warning"
+          type="checkbox"
+          id="modeToggle"
+          [checked]="activeTab() === 'preview'"
+          (change)="activeTab.set(activeTab() === 'edit' ? 'preview' : 'edit')"
+          role="switch"
+          >
+        <label class="form-check-label text-white fw-bold ms-3" for="modeToggle">
+          {{ activeTab() === 'edit' ? 'Edit Mode' : 'View Mode' }}
+        </label>
+        @if(activeTab() === 'edit'){
+          <button class="btn btn-outline-light btn-sm ms-3" (click)="formService.addRow()">
+            <i class="bi bi-plus"></i>Add Row
+          </button>
+        }
+      } @else {
+        <span class="text-white fw-bold">View Mode (Read Only)</span>
       }
     </div>
   </div>

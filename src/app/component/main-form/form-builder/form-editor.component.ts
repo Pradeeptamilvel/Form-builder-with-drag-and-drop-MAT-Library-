@@ -1,7 +1,8 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { FormService } from '../../../services/form.service';
 import { FormField } from '../../../models/field';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-form-editor',
@@ -12,6 +13,10 @@ import { FormField } from '../../../models/field';
 export class FormEditorComponent {
   //Injections
   formService = inject(FormService);
+  authService = inject(AuthService);
+
+  // Computed property to check if user is admin
+  isAdmin = computed(() => this.authService.isAdmin());
   onDrop(event: CdkDragDrop<string>, rowId: string) {
     if (event.previousContainer.data === 'field-selector') {
       const fieldType = event.item.data;

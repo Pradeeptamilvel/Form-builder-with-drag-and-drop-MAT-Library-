@@ -19,6 +19,7 @@ import { SelectFieldComponent } from './component/field-types/select-field/selec
 import { TextFieldComponent } from './component/field-types/text-field/text-field.component';
 import { RadioFieldComponent } from './component/field-types/radio-field/radio-field.component';
 import { DateFieldComponent } from './component/field-types/date-field/date-field.component';
+import { ButtonFieldComponent } from './component/field-types/button-field/button-field.component';
 import { FieldButtonComponent } from './component/form-elements/field-button/field-button.component';
 import { FormElementsComponent } from './component/form-elements/form-elements.component';
 import { FieldPreviewComponent } from './component/main-form/field-preview/field-preview.component';
@@ -28,6 +29,7 @@ import { FormPreviewComponent } from './component/main-form/form-preview/form-pr
 import { mainFormComponent } from './component/main-form/main-form.component';
 import { LoginComponent } from './component/login/login.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { NavHeaderComponent } from './component/nav-header/nav-header.component';
 
 @NgModule({
   declarations: [
@@ -45,8 +47,10 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
     SelectFieldComponent,
     RadioFieldComponent,
     DateFieldComponent,
+    ButtonFieldComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    NavHeaderComponent
   ],
   imports: [
     BrowserModule,

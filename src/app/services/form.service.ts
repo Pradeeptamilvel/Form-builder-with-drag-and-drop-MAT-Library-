@@ -5,6 +5,7 @@ import {
   SELECT_FIELD_DEFINITION,
   RADIO_FIELD_DEFINITION,
   DATE_FIELD_DEFINITION,
+  BUTTON_FIELD_DEFINITION,
 } from '../models/constants';
 import { FieldTypeDefinition, FormField, FormRow } from '../models/field';
 
@@ -18,6 +19,7 @@ export class FormService {
     ['checkbox', CHECKBOX_FIELD_DEFINITION],
     ['radio', RADIO_FIELD_DEFINITION],
     ['date', DATE_FIELD_DEFINITION],
+    ['button', BUTTON_FIELD_DEFINITION],
   ]);
 
   getFieldType(type: string): FieldTypeDefinition | undefined {

@@ -19,6 +19,7 @@
               updateFieldValue(selectedField.id, setting.key, $event)
             "
             placeholder="{{ setting.label }}"
+            [disabled]="!isAdmin()"
           />
         </div>
         } @case ('checkbox') {
@@ -31,6 +32,7 @@
               updateFieldValue(selectedField.id, setting.key, $event)
             "
             id="{{ setting.key }}"
+            [disabled]="!isAdmin()"
           />
           <label class="form-check-label fw-bold" for="{{ setting.key }}">
             {{ setting.label }}
@@ -60,6 +62,7 @@
                       )
                     "
                     placeholder="Option label"
+                    [disabled]="!isAdmin()"
                   />
                 </div>
               </div>
@@ -80,25 +83,29 @@
                       )
                     "
                     placeholder="Option value"
+                    [disabled]="!isAdmin()"
                   />
                 </div>
               </div>
               <div class="col-md-2 col-12 mt-4 pt-1">
+                @if(isAdmin()) {
                 <button
                   class="btn btn-outline-danger btn-sm w-100 d-flex align-items-center justify-content-center"
                   (click)="removeOption(selectedField.id, setting.key, i)"
                 >
                   <i class="bi bi-trash"></i>
                 </button>
+                }
               </div>
             </div>
-            }
+            } @if(isAdmin()) {
             <button
               class="btn btn-primary btn-sm mt-2"
               (click)="addOption(selectedField.id, setting.key)"
             >
               <i class="bi bi-plus"></i> Add Option
             </button>
+            }
           </div>
         </div>
         } @case ('date') {
@@ -112,6 +119,7 @@
               updateFieldValue(selectedField.id, setting.key, $event)
             "
             placeholder="{{ setting.label }}"
+            [disabled]="!isAdmin()"
           />
         </div>
         } @case ('select') {
@@ -123,6 +131,7 @@
             (ngModelChange)="
               updateFieldValue(selectedField.id, setting.key, $event)
             "
+            [disabled]="!isAdmin()"
           >
             @for (option of setting.options; track option.value) {
             <option [value]="option.value">{{ option.label }}</option>

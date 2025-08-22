@@ -12,6 +12,11 @@ export interface DefaultConfig {
   required: boolean;
   placeholder?: string;
   options?: OptionItem[];
+  buttonType?: string;
+  alignment?: string;
+  showCancel?: boolean;
+  cancelLabel?: string;
+  cancelButtonType?: string;
 }
 export interface FormField {
   id: string;
@@ -21,6 +26,12 @@ export interface FormField {
   inputType?: string;
   placeholder?: string;
   options?: OptionItem[];
+  buttonType?: string;
+  disabled?: boolean;
+  alignment?: string;
+  showCancel?: boolean;
+  cancelLabel?: string;
+  cancelButtonType?: string;
 }
 
 export interface FormRow {

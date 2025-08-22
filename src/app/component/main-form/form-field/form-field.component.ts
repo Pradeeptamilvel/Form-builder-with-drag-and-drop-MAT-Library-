@@ -1,6 +1,7 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { FormField } from '../../../models/field';
 import { FormService } from '../../../services/form.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-form-field',
@@ -11,13 +12,15 @@ import { FormService } from '../../../services/form.service';
 export class FormFieldComponent {
   field = input.required<FormField>();
 
-  // Injection
+  // Injections
   formService = inject(FormService);
+  authService = inject(AuthService);
 
-  // Computed property to check if this field is selected
+  // Computed properties
   isSelected = computed(() =>
     this.formService.selectedFieldId()?.id === this.field().id
   );
+  isAdmin = computed(() => this.authService.isAdmin());
 
   removeField(event: MouseEvent) {
     event.stopPropagation();

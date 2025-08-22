@@ -31,7 +31,7 @@ export class LoginComponent {
     if (isAuthenticated) {
       this.router.navigate(['/dashboard']);
     } else {
-      this.errorMessage = 'Invalid login credentials';
+      this.errorMessage = 'Invalid login credentials or role';
     }
   }
 
