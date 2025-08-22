@@ -7,7 +7,7 @@ export interface User {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private currentUserSubject: BehaviorSubject<User | null>;
@@ -16,7 +16,9 @@ export class AuthService {
   // Credentials configuration
   private readonly credentials = {
     admin: { username: 'admin', password: 'admin', role: 'admin' as const },
-    user: { username: 'user', password: 'user', role: 'user' as const }
+    admin2: { username: '2', password: '2', role: 'admin' as const },
+    user: { username: 'user', password: 'user', role: 'user' as const },
+    user2: { username: '1', password: '1', role: 'user' as const },
   };
 
   constructor() {
@@ -33,19 +35,19 @@ export class AuthService {
   }
 
   login(username: string, password: string, role: 'admin' | 'user'): boolean {
-    // Validate credentials against configured values
-    if (role === 'admin' && username === this.credentials.admin.username && password === this.credentials.admin.password) {
-      const user: User = { username, role };
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this.currentUserSubject.next(user);
-      return true;
-    }
-
-    if (role === 'user' && username === this.credentials.user.username && password === this.credentials.user.password) {
-      const user: User = { username, role };
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this.currentUserSubject.next(user);
-      return true;
+    // Validate credentials against configured values by iterating through all credentials
+    for (const key in this.credentials) {
+      const credential = this.credentials[key as keyof typeof this.credentials];
+      if (
+        role === credential.role &&
+        username === credential.username &&
+        password === credential.password
+      ) {
+        const user: User = { username, role };
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+        return true;
+      }
     }
 
     return false;
