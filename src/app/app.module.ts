@@ -26,6 +26,8 @@ import { FormEditorComponent } from './component/main-form/form-builder/form-edi
 import { FormFieldComponent } from './component/main-form/form-field/form-field.component';
 import { FormPreviewComponent } from './component/main-form/form-preview/form-preview.component';
 import { mainFormComponent } from './component/main-form/main-form.component';
+import { LoginComponent } from './component/login/login.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { mainFormComponent } from './component/main-form/main-form.component';
     SelectFieldComponent,
     RadioFieldComponent,
     DateFieldComponent,
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
