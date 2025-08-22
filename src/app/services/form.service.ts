@@ -8,6 +8,7 @@ import {
   BUTTON_FIELD_DEFINITION,
 } from '../models/constants';
 import { FieldTypeDefinition, FormField, FormRow } from '../models/field';
+import { FormStorageService, StoredForm, FormSubmission } from './form-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +29,7 @@ export class FormService {
 
   private _rows = signal<FormRow[]>([]);
   private _selectedFieldId = signal<string | null>(null);
+  private _hasUnsavedChanges = signal<boolean>(false);
 
   public readonly rows = this._rows.asReadonly();
   public readonly selectedFieldId = computed(() =>
@@ -35,9 +37,24 @@ export class FormService {
       .flatMap((row) => row.fields)
       .find((field) => field.id === this._selectedFieldId())
   );
+  public readonly hasUnsavedChanges = this._hasUnsavedChanges.asReadonly();
 
-  constructor() {
+  constructor(private formStorage: FormStorageService) {
     this._rows.set([{ id: crypto.randomUUID(), fields: [] }]);
+  }
+
+  // Unsaved changes tracking methods
+  markAsUnsaved(): void {
+    this._hasUnsavedChanges.set(true);
+  }
+
+  markAsSaved(): void {
+    this._hasUnsavedChanges.set(false);
+  }
+
+  resetForm(): void {
+    this._rows.set([{ id: crypto.randomUUID(), fields: [] }]);
+    this.markAsSaved();
   }
 
   printValues(a:any){
@@ -62,6 +79,7 @@ export class FormService {
       return row;
     });
     this._rows.set(newRows);
+    this.markAsUnsaved();
   }
   deleteField(fieldId: string) {
     const rows = this._rows();
@@ -70,11 +88,13 @@ export class FormService {
       return { ...row, fields: updatedFields };
     });
     this._rows.set(newRows);
+    this.markAsUnsaved();
   }
 
   addRow() {
     const newRow: FormRow = { id: crypto.randomUUID(), fields: [] };
     this._rows.set([...this._rows(), newRow]);
+    this.markAsUnsaved();
   }
 
   deleteRow(rowId: string) {
@@ -82,6 +102,7 @@ export class FormService {
     if (rows.length > 1) {
       const newRows = rows.filter((row) => row.id !== rowId);
       this._rows.set(newRows);
+      this.markAsUnsaved();
     }
   }
 
@@ -122,7 +143,8 @@ export class FormService {
       targetFields.splice(targetIndex, 0, fieldToMove);
       newRows[targetRowIndex].fields = targetFields;
     }
-    this._rows;
+    this._rows.set(newRows);
+    this.markAsUnsaved();
   }
 
   setSelectedField(fieldId: string | null) {
@@ -143,6 +165,43 @@ export class FormService {
       };
     });
     this._rows.set(newRows);
+    this.markAsUnsaved();
   }
 
+  saveCurrentForm(name?: string): StoredForm {
+    const formData = {
+      name: name || 'Untitled Form',
+      rows: this._rows()
+    };
+    const savedForm = this.formStorage.saveForm(formData);
+    this.markAsSaved();
+    return savedForm;
+  }
+
+  loadForm(formId: string): boolean {
+    const form = this.formStorage.getForm(formId);
+    if (form) {
+      this._rows.set(form.rows);
+      return true;
+    }
+    return false;
+  }
+
+  submitForm(formData: Record<string, any>): FormSubmission {
+    // For now, we'll use a placeholder form ID since forms aren't persisted yet
+    const formId = 'current-form';
+    return this.formStorage.saveSubmission(formId, formData);
+  }
+
+  getAllStoredForms(): StoredForm[] {
+    return this.formStorage.getAllForms();
+  }
+
+  deleteStoredForm(formId: string): void {
+    this.formStorage.deleteForm(formId);
+  }
+
+  getFormSubmissions(formId: string): FormSubmission[] {
+    return this.formStorage.getFormSubmissions(formId);
+  }
 }

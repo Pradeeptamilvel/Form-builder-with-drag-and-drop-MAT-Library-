@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { FormService } from '../../../services/form.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-form-preview',
@@ -8,6 +9,12 @@ import { FormService } from '../../../services/form.service';
   styleUrl: './form-preview.component.scss'
 })
 export class FormPreviewComponent {
-//Injections
-formService = inject(FormService);
+  //Injections
+  formService = inject(FormService);
+  authService = inject(AuthService);
+
+  // Check if there are any fields in the form
+  hasFields = computed(() => {
+    return this.formService.rows().some(row => row.fields.length > 0);
+  });
 }

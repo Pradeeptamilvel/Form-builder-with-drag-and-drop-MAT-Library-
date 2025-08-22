@@ -3,7 +3,6 @@ import { TitleCasePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -30,6 +29,7 @@ import { mainFormComponent } from './component/main-form/main-form.component';
 import { LoginComponent } from './component/login/login.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { NavHeaderComponent } from './component/nav-header/nav-header.component';
+import { FormSubmissionComponent } from './component/form-submission/form-submission.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,8 @@ import { NavHeaderComponent } from './component/nav-header/nav-header.component'
     ButtonFieldComponent,
     LoginComponent,
     DashboardComponent,
-    NavHeaderComponent
+    NavHeaderComponent,
+    FormSubmissionComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +65,6 @@ import { NavHeaderComponent } from './component/nav-header/nav-header.component'
     MatSelectModule,
     DragDropModule,
     TitleCasePipe,
-    MatButtonToggleModule,
     FormsModule
   ],
   providers: [],

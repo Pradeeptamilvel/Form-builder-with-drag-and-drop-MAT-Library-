@@ -4,9 +4,10 @@
 
   <div class="btn-group gap-2" *ngIf="field().showCancel; else singleButton">
     <button
-      type="button"
+      [type]="isSubmitButton() ? 'submit' : 'button'"
       class="btn {{ field().buttonType || 'btn-primary' }}"
-      [disabled]="field().disabled">
+      [disabled]="field().disabled"
+      (click)="handleClick()">
       {{ field().label || 'Button' }}
     </button>
     <button
@@ -19,9 +20,10 @@
 
   <ng-template #singleButton>
     <button
-      type="button"
+      [type]="isSubmitButton() ? 'submit' : 'button'"
       class="btn {{ field().buttonType || 'btn-primary' }}"
-      [disabled]="field().disabled">
+      [disabled]="field().disabled"
+      (click)="handleClick()">
       {{ field().label || 'Button' }}
     </button>
   </ng-template>
